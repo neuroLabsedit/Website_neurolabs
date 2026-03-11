@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-neon-cyan: #00f0ff;
+  --color-neon-purple: #b026ff;
+  --color-deep-black: #050505;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background-color: var(--color-deep-black);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+.glass-card {
+  background: var(--color-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--color-neon-cyan), var(--color-neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, var(--color-neon-cyan), var(--color-neon-purple));
+}
