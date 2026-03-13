@@ -30,16 +30,32 @@ export default function App() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleJoinWaitlist = async (e: FormEvent) => {
+const handleJoinWaitlist = async (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE'; // Replace with your Formspree form hash from dashboard
+
     setStatus('loading');
 
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1500);
+    const formData = new FormData();
+    formData.append('email', email);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (

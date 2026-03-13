@@ -1,8 +1,14 @@
-# Vercel Analytics Integration - Progress
+# Project Tasks
 
-## Steps:
-- [x] Step 1: Edit index.html - Add Vercel Analytics script to `<head>` + fix duplicate viewport meta
-- [x] Step 2: `npm run build` - Verify build succeeds
-- [x] Step 3: `git add . && git commit -m \"feat: integrate Vercel Analytics\" && git push` - Auto-redeploy on Vercel
-- [x] Step 4: Verify analytics in Vercel dashboard (data lags ~5-10min)
+## Vercel Analytics - Complete ✅
+
+All steps complete.
+
+## Formspree Email Fix - In Progress
+
+### Steps:
+- [x] Step 1: Update App.tsx handler to real Formspree POST (placeholder ID)
+- [ ] Step 2: Replace 'YOUR_FORM_ID_HERE' with real Formspree hash from dashboard
+- [x] Step 3: npm run build & test locally (`npm run dev`)
+- [x] Step 4: git commit & push for production
 
