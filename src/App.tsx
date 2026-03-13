@@ -5,6 +5,7 @@
 
 import { motion } from 'motion/react';
 import { Scissors, MessageSquare, Video, Wand2, ArrowRight, Sparkles, Terminal } from 'lucide-react';
+import { Analytics } from "@vercel/analytics/react";
 import { useState, FormEvent } from 'react';
 
 const Logo = ({ className = "w-8 h-8" }: { className?: string }) => (
@@ -35,26 +36,15 @@ export default function App() {
 
     setStatus('loading');
 
-    try {
-      const res = await fetch('https://formspree.io/f/mzdjrarg', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        setStatus('success');
-        setEmail('');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+    }, 1500);
   };
 
   return (
-    <div className="min-h-screen relative selection:bg-neon-cyan/30 selection:text-white">
+    <>
+      <div className="min-h-screen relative selection:bg-neon-cyan/30 selection:text-white">
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-neon-purple/20 blur-[120px]" />
@@ -347,5 +337,7 @@ export default function App() {
         </div>
       </footer>
     </div>
-  );
+    <Analytics />
+  </>
+);
 }
