@@ -34,25 +34,22 @@ const handleJoinWaitlist = async (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE'; // Replace with your Formspree form hash from dashboard
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgonybbn';
 
     setStatus('loading');
 
     const formData = new FormData();
     formData.append('email', email);
+    formData.append('_format', 'json');
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: formData,
+        mode: 'no-cors',
       });
-
-      if (res.ok) {
-        setStatus('success');
-        setEmail('');
-      } else {
-        setStatus('error');
-      }
+      setStatus('success');
+      setEmail('');
     } catch (error) {
       setStatus('error');
     }
